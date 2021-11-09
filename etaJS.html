@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="">Data di nascita</label>
+
+        <select name="giornoI" id="">
+            <script>
+                for(i=1;i<=31;i++){
+                    document.write("<option value='"+i+"'>"+i+" </option>");
+                }
+            </script>
+        </select>
+        <select name="meseI" id="">
+            <script>
+                for(i=1;i<=12;i++){
+                    document.write("<option value='"+i+"'>");
+                    switch(i){
+                        case 1:document.write("GENNAIO"); break;
+                        case 2:document.write("FEBBRAIO"); break;
+                        case 3:document.write("MARZO"); break;
+                        case 4:document.write("APRILE"); break;
+                        case 5:document.write("MAGGIO"); break;
+                        case 6:document.write("GIUGNO"); break;
+                        case 7:document.write("LUGLIO"); break;
+                        case 8:document.write("AGOSTO"); break;
+                        case 9:document.write("SETTEMBRE"); break;
+                        case 10:document.write("OTTOBRE"); break;
+                        case 11:document.write("NOVEMBRE"); break;
+                        case 12:document.write("DICEMBRE"); break;
+                    }
+                    document.write("</option>");
+                }
+            </script>
+        </select>
+        <input type="number" name="annoI"> <br><br>
+
+        <label for="">Data di oggi</label>
+
+        <select name="giornoF" id="">
+            <script>
+                for(i=1;i<=31;i++){
+                    document.write("<option value='"+i+"'>"+i+" </option>");
+                }
+            </script>
+        </select>
+        <select name="meseF" id="">
+            <script>
+                for(i=1;i<=12;i++){
+                    document.write("<option value='"+i+"'>");
+                    switch(i){
+                        case 1:document.write("GENNAIO"); break;
+                        case 2:document.write("FEBBRAIO"); break;
+                        case 3:document.write("MARZO"); break;
+                        case 4:document.write("APRILE"); break;
+                        case 5:document.write("MAGGIO"); break;
+                        case 6:document.write("GIUGNO"); break;
+                        case 7:document.write("LUGLIO"); break;
+                        case 8:document.write("AGOSTO"); break;
+                        case 9:document.write("SETTEMBRE"); break;
+                        case 10:document.write("OTTOBRE"); break;
+                        case 11:document.write("NOVEMBRE"); break;
+                        case 12:document.write("DICEMBRE"); break;
+                    }
+                    document.write("</option>");
+                }
+            </script>
+        </select>
+        <input type="number" name="annoF" min=1>
+        
+        <input type="button" value="OGGI" onclick="oggi(this.form);">
+        <br><br>
+        <input type="button" value="Calcola" onclick="calcola(this.form);">
+
+    </form>
+
+    <script>
+        function oggi(form){
+            d = new Date();     //creo l'oggetto per gestire le date
+            g = d.getDate();    //recupero il giorno del mese corrente
+            m = d.getMonth();   //recupero il mese corrente
+            a = d.getFullYear();// recupero l'anno corrente
+
+            form.giornoF.selectedIndex = g-1; //va a cambiare il valore della select giorno finale
+            form.meseF.selectedIndex = m; //va a cambiare il valore della select mese finale
+            form.annoF.value = a;   //va a cambiare il valore dell'input anno finale       
+        }
+
+        function calcola(form){
+            gI = form.giornoI.value;    //recupero il giorno dalla select giorno iniziale
+            mI = form.meseI.value;      //recupero il mese dalla select mese iniziale
+            aI = form.annoI.value;      //recupero l'anno dell'input anno iniziale
+
+            gF = form.giornoF.value;    //recupero il giorno dalla select giorno finale
+            mF = form.meseF.value;      //recupero il mese dalla select mese finale
+            aF = form.annoF.value;      //recupero l'anno dell'input anno finale
+
+            geta = Math.abs(gF-gI);
+            meta = Math.abs(mF-mI);      
+            aeta  = aF-aI;
+
+            alert(geta + " giorni " + meta + " mesi " + aeta + " anni");
+        }
+
+    </script>
+</body>
+</html>
